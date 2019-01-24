@@ -1,0 +1,187 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: gray;
+}
+* {
+  box-sizing: border-box;
+  transition: background 0.2s;
+}
+
+#container {
+  margin: 0 auto;
+  width: 40%;
+  min-width: 600px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+#tab_bar {
+  flex-grow: 0;
+  display: flex;
+  background: lightgray;
+  padding: 20px 10px 0 10px;
+  position: relative;
+  overflow: hidden;
+}
+#tab_bar::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 5px 0 rgba(0,0,0,.1);
+}
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.tab {
+  color: white !important;
+  text-decoration: none !important;
+  background: gray;
+  padding: 30px 10px;
+  flex-grow: 1;
+  margin: 0 10px;
+  text-align: center;
+  border-radius: 5px 5px 0 0;
+  z-index: 2;
+}
+.tab:not(.active):hover {
+  background: #999;
+}
+.tab.active {
+  color: black !important;
+  background: white;
+  z-index: 4;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
+}
+
+.tabcontent {
+  flex: 1;
+  flex-direction: column;
+  padding: 20px;
+  display: none;
+}
+.tabcontent.active {
+  display: flex;
+}
+
+#tabcontent_dialer {
+  max-height: 900px;
+}
+#dialer_inputbox {
+  font-size: 20pt;
+  border: 1px solid lightgray;
+  padding: 5px;
+  border-radius: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  box-shadow: inset 1px 1px 3px -1px rgba(0,0,0,.3);
+}
+.dialer_row {
+  flex: 1;
+  display: flex;
+  margin: 20px -10px 0 -10px;
+}
+.dialer_button {
+  flex: 1;
+  padding: 20px;
+  margin: 0 10px;
+  background: lightgray;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  color: black !important;
+  text-decoration: none !important;
+  font-size: 16pt;
+  text-align: center;
+  vertical-align: middle;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 1px 1px 3px -1px rgba(0,0,0,.3);
+}
+.dialer_button:hover {
+  background: white;
+}
+.dialer_button:active {
+  background: gray;
+}
+.dialer_button span {
+  display: block;
+  flex: 0;
+}
+
+.contact_card {
+  margin-bottom: 20px;
+  margin-left: 42px;
+  padding: 20px;
+  box-shadow: 1px 1px 3px -1px rgba(0,0,0,.3);
+  background: lightgray;
+  border-radius: 5px;
+  position: relative;
+}
+.contact_card_user_icon {
+  position: absolute;
+  font-size: 30pt;
+  top: 5px;
+  left: -50px;
+  color: lightgray;
+}
+.contact_card_name {
+  margin-top: 0;
+  font-weight: 100;
+}
+.contact_card_meansofcontact {
+  display: inline-block;
+  color: white !important;
+  background: gray;
+  border-radius: 20px;
+  padding: 10px 15px;
+  margin-right: 10px;
+}
+.contact_card_meansofcontact:hover {
+  background: #999;
+}
+.contact_card_meansofcontact i {
+  margin-right: 1ex;
+}
+
+#tabcontent_newcontact .contact_card_name input {
+  font-size: 20pt;
+  font-weight: 100;
+  width: 180px;
+  border: none;
+  border-bottom: 1px solid gray;
+  background: none;
+}
+#tabcontent_newcontact .contact_card_name input::placeholder {
+  font-style: italic;
+}
+#tabcontent_newcontact .contact_card_meansofcontact input {
+  font-size: 11pt;
+  color: white;
+  width: 150px;
+  border: none;
+  border-bottom: 1px solid white;
+  background: none;
+}
+#tabcontent_newcontact .contact_card_meansofcontact input::placeholder {
+  color: white;
+  font-style: italic;
+}
+#tabcontent_newcontact .dialer_row {
+  flex: 0;
+  margin-top: 0;
+  margin-left: 32px;
+}
