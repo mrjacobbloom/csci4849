@@ -44,11 +44,30 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          //                        Moon         Murthy       Bloom        Johnson
-          ['Condition',  'Average', 'Subject 1', 'Subject 2', 'Subject 3', 'Subject 4'],
-          ['Ascending',  3.34     , 3.60       , 0.00       , 3.90       , 2.51       ],
-          ['Descending', 3.15     , 3.52       , 0.00       , 3.80       , 2.14       ],
+        //               Moon   Murthy   Bloom   Johnson
+        var data_asc  = [3.60 , 0.00   , 3.90  , 2.51];
+        var data_desc = [3.52 , 0.00   , 3.80  , 2.14];
+        var average = list => list.reduce((a,b) => a + b) / list.length;
+        var standard_deviation = list => {
+          var a = average(list);
+          var sum = list.reduce((acc, c) => acc + ((c - a) ** 2));
+          var std = Math.sqrt(sum / list.length - 1);
+          return [a - std/2, a + std/2];
+        };
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Condition');
+        data.addColumn('number', 'Average');
+        data.addColumn('number', 'Subject 1');
+        data.addColumn('number', 'Subject 2');
+        data.addColumn('number', 'Subject 3');
+        data.addColumn('number', 'Subject 4');
+        data.addColumn({id:'sd0', type:'number', role:'interval'});
+        data.addColumn({id:'sd1', type:'number', role:'interval'});
+
+        data.addRows([
+          ['Ascending', average(data_asc), ...data_asc, ...standard_deviation(data_asc)],
+          ['Descending', average(data_desc), ...data_desc, ...standard_deviation(data_desc),],
         ]);
 
         // @todo: figure out error boxes
@@ -64,17 +83,22 @@
           },
           seriesType: 'bars',
           series: {
+            // average
             0: {
               visibleInLegend: false,
+              type: 'bars',
               color: 'lightgray'
             },
+            // Data for each subject
             1: {type: 'scatter'},
             2: {type: 'scatter'},
             3: {type: 'scatter'},
             4: {type: 'scatter'},
-            5: {type: 'scatter'},
-          }
-          // intervals: { style: 'boxes'},
+          },
+          intervals: {
+            style: 'bars',
+            color:'gray'
+          },
         };
 
         var chart = new google.visualization.ComboChart(document.getElementById('columnchart_material'));
