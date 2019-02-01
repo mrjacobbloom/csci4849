@@ -40,34 +40,46 @@
     </style>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      // taken pretty directly from https://google-developers.appspot.com/chart/interactive/docs/gallery/columnchart
-      google.charts.load('current', {'packages':['bar']});
+      google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          //             Moon         Murthy       Bloom        Johnson
-          ['Condition',  'Subject 1', 'Subject 2', 'Subject 3', 'Subject 4'],
-          ['Ascending',  3.60       , 0.00       , 3.90       , 2.51       ],
-          ['Descending', 3.52       , 0.00       , 3.80       , 2.14       ],
+          //                        Moon         Murthy       Bloom        Johnson
+          ['Condition',  'Average', 'Subject 1', 'Subject 2', 'Subject 3', 'Subject 4'],
+          ['Ascending',  3.34     , 3.60       , 0.00       , 3.90       , 2.51       ],
+          ['Descending', 3.15     , 3.52       , 0.00       , 3.80       , 2.14       ],
         ]);
 
         // @todo: figure out error boxes
         // https://developers.google.com/chart/interactive/docs/gallery/intervals
 
         var options = {
-          chart: {
-            title: 'Throughput When Ascending / Descending Staircase'
+          title: 'Throughput When Ascending / Descending Staircase',
+          chartArea: {
+            width: 280
           },
           vAxis: {
             title: 'Mean Throughput (bits/s)'
           },
+          seriesType: 'bars',
+          series: {
+            0: {
+              visibleInLegend: false,
+              color: 'lightgray'
+            },
+            1: {type: 'scatter'},
+            2: {type: 'scatter'},
+            3: {type: 'scatter'},
+            4: {type: 'scatter'},
+            5: {type: 'scatter'},
+          }
           // intervals: { style: 'boxes'},
         };
 
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+        var chart = new google.visualization.ComboChart(document.getElementById('columnchart_material'));
 
-        chart.draw(data, google.charts.Bar.convertOptions(options));
+        chart.draw(data, options);
       }
     </script>
   </head>
