@@ -1,0 +1,128 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://unpkg.com/papercss/dist/paper.min.css"/>
+    <style>
+      h1 {
+        margin-bottom: 10px;
+      }
+      .subtitle {
+        font-size: 26pt;
+      }
+      h2 {
+        margin-bottom: 20px;
+      }
+      #columnchart_material {
+        width: 500px;
+        height: 300px;
+        padding: 20px 10px;
+        float: left;
+        margin-right: 20px;
+      }
+      .clearfix {
+        clear: both;
+      }
+    </style>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      // taken pretty directly from https://google-developers.appspot.com/chart/interactive/docs/gallery/columnchart
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          //             Moon         Murthy       Bloom        Johnson
+          ['Condition',  'Subject 1', 'Subject 2', 'Subject 3', 'Subject 4'],
+          ['Ascending',  0.00       , 0.00       , 3.90       , 0.00       ],
+          ['Descending', 0.00       , 0.00       , 3.80       , 0.00       ],
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Throughput When Ascending / Descending Staircase'
+          },
+          vAxis: {
+            title: 'Throughput (bits/s)'
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+  </head>
+  <body>
+    <div class="paper container">
+      <h1>Fitts' Law Experiment</h1>
+      <span class="subtitle">
+        <span class="badge">CSCI 4849-5849</span>
+        <span class="badge secondary">Assignment 2</span>
+      </span>
+      <h2>The Team</h2>
+      <div class="row flex-spaces">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">David Moon</h4>
+            <h5 class="card-subtitle">Supreme Leader</h5>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Nischay Murthy</h4>
+            <h5 class="card-subtitle">Vice President</h5>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Jacob Bloom</h4>
+            <h5 class="card-subtitle">Consultant</h5>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Jacob Johnson</h4>
+            <h5 class="card-subtitle">Executive Producer</h5>
+          </div>
+        </div>
+      </div>
+      <h2>The Experiment</h2>
+      <p>
+        Our team sought to explore the link between throughput and the act of
+        either ascending or descending a staircase. We organized a test of
+        throughput via the Fitts' Law experiment application
+        <a href="http://www.yorku.ca/mack/FittsLawSoftware/doc/index.html?GoFitts.html">GoFitts</a>.
+      </p>
+      <p>
+        Subjects completed a 12-trial pointing test using their dominant hand.
+        It was administered on a laptop. First, the subject would complete the
+        test while ascending the stairs. Then, the subject would complete the
+        test while descending the stairs. We asked subjects to start each trial
+        when they reached the second step, and to try to complete each trial
+        before they reached the landing.
+      </p>
+      <h2>Data & Analysis</h2>
+      <div id="columnchart_material" class="border"></div>
+      <p>
+        Our tests did not show evidence of a significant difference in
+        throughput between when a test subject is ascending or descending a
+        staircase.
+      </p>
+      <div class="clearfix"></div>
+      <h2>Further Experimentation</h2>
+      <p>
+        This experiment really begs more questions than it does provide
+        answers. For example, does the size or length of the staircase have a
+        meaningful effect on throughput? We had subjects try to complete each
+        trial before they reached the landing, which likely affected their pace.
+        A longer staircase (or better yet, a stair-stepper machine) might yield
+        interestingly divergent results.
+      </p>
+      <p>
+        One variable that may have tainted our data is exhaustion. It's possible
+        that, without allowing for cool-down time between the ascending and
+        descending conditions, subjects were more winded during the descendin
+        part of the experiment.
+      </p>
+    </div>
+  </body>
+</html>
