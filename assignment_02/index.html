@@ -10,6 +10,7 @@
       }
       h2 {
         margin-bottom: 20px;
+        clear: both;
       }
       #columnchart_material {
         width: 500px;
@@ -17,9 +18,7 @@
         padding: 20px 10px;
         float: left;
         margin-right: 20px;
-      }
-      .clearfix {
-        clear: both;
+        margin-bottom: 20px;
       }
     </style>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -41,7 +40,7 @@
             title: 'Throughput When Ascending / Descending Staircase'
           },
           vAxis: {
-            title: 'Throughput (bits/s)'
+            title: 'Mean Throughput (bits/s)'
           }
         };
 
@@ -86,6 +85,7 @@
         </div>
       </div>
       <h2>The Experiment</h2>
+      <img class="float-right" src="./settings.png" width="300" alt="GoFitts configuration"/>
       <p>
         Our team sought to explore the link between throughput and the act of
         either ascending or descending a staircase. We organized a test of
@@ -100,6 +100,9 @@
         when they reached the second step, and to try to complete each trial
         before they reached the landing.
       </p>
+      <p>
+        The settings we used for the GoFitts trial are shown to the right.
+      </p>
       <h2>Data & Analysis</h2>
       <div id="columnchart_material" class="border"></div>
       <p>
@@ -107,7 +110,6 @@
         throughput between when a test subject is ascending or descending a
         staircase.
       </p>
-      <div class="clearfix"></div>
       <h2>Further Experimentation</h2>
       <p>
         This experiment really begs more questions than it does provide
