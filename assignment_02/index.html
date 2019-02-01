@@ -35,13 +35,17 @@
           ['Descending', 0.00       , 0.00       , 3.80       , 0.00       ],
         ]);
 
+        // @todo: figure out error boxes
+        // https://developers.google.com/chart/interactive/docs/gallery/intervals
+
         var options = {
           chart: {
             title: 'Throughput When Ascending / Descending Staircase'
           },
           vAxis: {
             title: 'Mean Throughput (bits/s)'
-          }
+          },
+          // intervals: { style: 'boxes'},
         };
 
         var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
@@ -123,7 +127,7 @@
       <p>
         One variable that may have tainted our data is exhaustion. It's possible
         that, without allowing for cool-down time between the ascending and
-        descending conditions, subjects were more winded during the descendin
+        descending conditions, subjects were more winded during the descending
         part of the experiment.
       </p>
     </div>
