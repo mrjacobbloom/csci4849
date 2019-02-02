@@ -14,14 +14,15 @@
       }
       #columnchart_material {
         width: 500px;
-        height: 300px;
+        height: 250px;
         padding: 20px 10px;
         float: left;
         margin-right: 20px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
       }
-      .clearfix {
+      #the-data-table {
         clear: both;
+        margin-top: 20px;
       }
       .td-badge {
         text-align: center;
@@ -40,13 +41,14 @@
     </style>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
+      //               Moon   Murthy   Bloom   Johnson
+      var data_asc  = [3.60 , 3.50   , 3.90  , 2.51];
+      var data_desc = [3.52 , 4.09   , 3.80  , 2.14];
+
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        //               Moon   Murthy   Bloom   Johnson
-        var data_asc  = [3.60 , 0.00   , 3.90  , 2.51];
-        var data_desc = [3.52 , 0.00   , 3.80  , 2.14];
         var average = list => list.reduce((a,b) => a + b) / list.length;
         var standard_deviation = list => {
           var a = average(list);
@@ -83,7 +85,11 @@
             fontSize: 13
           },
           vAxis: {
-            title: 'Mean Throughput (bits/s)'
+            title: 'Mean Throughput (bits/s)',
+            viewWindow: {
+              min: 0,
+              max: 4.3
+            }
           },
           seriesType: 'bars',
           series: {
@@ -101,7 +107,8 @@
           },
           intervals: {
             style: 'bars',
-            color:'gray'
+            color: 'gray',
+            lineWidth: 2,
           },
         };
 
@@ -170,15 +177,21 @@
       <h2>Data & Analysis</h2>
       <div id="columnchart_material" class="border"></div>
       <p>
-        Our tests showed evidence that mean throughput is consistently higher
+        Our tests showed evidence that mean throughput is generally higher
         when ascending a staircase than descending. For test subjects 1 and 3,
         this only amounted to a difference of about 0.1 bits/sec. But for
         subject 4, the effect was more pronounced, with a difference of 
         0.4 bits/sec between their ascending and descending mean throughputs.
       </p>
+      <p>
+        The only outlier here was subject 3, whose throughput was nearly 0.6
+        bits/sec higher when descending. This brought the average throughput to
+        around 3.4 for both ascending and descending. However, the standard
+        deviation was far greater for the descending condition.
+      </p>
       <details>
         <summary class="paper-btn btn-secondary">Explore more detailed data</summary>
-        <table class="clearfix">
+        <table id="the-data-table">
           <thead>
             <tr>
               <th colspan="5" class="td-badge badge">Subject 1: David Moon</th>
@@ -351,7 +364,181 @@
               </tr>
           </tbody>
 
-          <!--  JACOB BLOOM -->
+          <!--  NISCHAY MURTHY -->
+
+          <thead>
+              <tr>
+                <th colspan="5" class="td-badge badge">Subject 2: Nischay Murthy</th>
+              </tr>
+              <tr>
+                <th>Condition</th>
+                <th>Amplitude</th>
+                <th>Width</th>
+                <th>MT (ms/trial)</th>
+                <th>TP (bits/sec)</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td rowspan="13">Ascending</td>
+                  <td>200</td>
+                  <td>40</td>
+                  <td>794.6</td>
+                  <td>2.97</td>
+                </tr>
+                <tr>
+                  <td>100</td>
+                  <td>20</td>
+                  <td>813</td>
+                  <td>2.17</td>
+                </tr>
+                <tr>
+                  <td>400</td>
+                  <td>40</td>
+                  <td>788.6</td>
+                  <td>4.3</td>
+                </tr>
+                <tr>
+                  <td>800</td>
+                  <td>20</td>
+                  <td>1107.6</td>
+                  <td>5.21</td>
+                </tr>
+                <tr>
+                  <td>800</td>
+                  <td>80</td>
+                  <td>788.4</td>
+                  <td>4.61</td>
+                </tr>
+                <tr>
+                  <td>200</td>
+                  <td>80</td>
+                  <td>609</td>
+                  <td>2.79</td>
+                </tr>
+                <tr>
+                  <td>200</td>
+                  <td>20</td>
+                  <td>793.2</td>
+                  <td>4.12</td>
+                </tr>
+                <tr>
+                  <td>100</td>
+                  <td>40</td>
+                  <td>632.2</td>
+                  <td>2.19</td>
+                </tr>
+                <tr>
+                  <td>400</td>
+                  <td>80</td>
+                  <td>731.8</td>
+                  <td>2.62</td>
+                </tr>
+                <tr>
+                  <td>400</td>
+                  <td>20</td>
+                  <td>945</td>
+                  <td>4.33</td>
+                </tr>
+                <tr>
+                  <td>800</td>
+                  <td>40</td>
+                  <td>1048.4</td>
+                  <td>3.48</td>
+                </tr>
+                <tr>
+                  <td>100</td>
+                  <td>80</td>
+                  <td>487.2</td>
+                  <td>3.22</td>
+                </tr>        
+                <tr>
+                  <td class="badge td-badge td-right" colspan="2">Grand Means:</td>
+                  <td class="td-bold">794.9</td>
+                  <td class="td-bold">3.5</td>
+                </tr>
+  
+                <tr>
+                  <td rowspan="13">Descending</td>
+                  <td>800</td>
+                  <td>80</td>
+                  <td>844.2</td>
+                  <td>3.67</td>
+                </tr>
+                <tr>
+                  <td>100</td>
+                  <td>40</td>
+                  <td>642.6</td>
+                  <td>4.33</td>
+                </tr>
+                <tr>
+                  <td>200</td>
+                  <td>40</td>
+                  <td>780.2</td>
+                  <td>3.91</td>
+                </tr>
+                <tr>
+                  <td>800</td>
+                  <td>40</td>
+                  <td>1053.4</td>
+                  <td>5.43</td>
+                </tr>
+                <tr>
+                  <td>800</td>
+                  <td>20</td>
+                  <td>1087.6</td>
+                  <td>4.63</td>
+                </tr>
+                <tr>
+                  <td>400</td>
+                  <td>80</td>
+                  <td>732</td>
+                  <td>3.95</td>
+                </tr>
+                <tr>
+                  <td>100</td>
+                  <td>80</td>
+                  <td>461.8</td>
+                  <td>4.51</td>
+                </tr>
+                <tr>
+                  <td>400</td>
+                  <td>40</td>
+                  <td>820.6</td>
+                  <td>4.01</td>
+                </tr>
+                <tr>
+                  <td>100</td>
+                  <td>20</td>
+                  <td>657.2</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td>200</td>
+                  <td>20</td>
+                  <td>815.2</td>
+                  <td>4.73</td>
+                </tr>
+                <tr>
+                  <td>200</td>
+                  <td>80</td>
+                  <td>614.2</td>
+                  <td>2.32</td>
+                </tr>
+                <tr>
+                  <td>400</td>
+                  <td>20</td>
+                  <td>963</td>
+                  <td>4.59</td>
+                </tr>        
+                <tr>
+                  <td class="badge td-badge td-right" colspan="2">Grand Means:</td>
+                  <td class="td-bold">789.3</td>
+                  <td class="td-bold">4.09</td>
+                </tr>
+            </tbody>
+
+            <!--  JACOB BLOOM -->
 
           <thead>
               <tr>
@@ -714,8 +901,9 @@
         that, without allowing for cool-down time between the ascending and
         descending conditions, subjects were more winded during the descending
         part of the experiment, which could account for the drop in descending
-        throughput. Further experiments could verify the degree to which this
-        was an issue in our trial.
+        throughput and the higher standard deviation for this condition. Further
+        experiments could verify the degree to which this was an issue in our
+        trial.
       </p>
     </div>
   </body>
