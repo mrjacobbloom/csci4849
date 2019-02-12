@@ -164,13 +164,18 @@ main {
 }
 .contact_card_meansofcontact {
   display: inline-block;
+  margin-right: 10px;
+  white-space: nowrap;
+}
+.contact_card_meansofcontact_link {
+  cursor: pointer;
+  display: inline-block;
   color: white !important;
   background: gray;
   border-radius: 20px;
   padding: 10px 15px;
-  margin-right: 10px;
 }
-.contact_card_meansofcontact:hover {
+.contact_card_meansofcontact_link:hover {
   background: #999;
 }
 .contact_card_meansofcontact i {

@@ -29,17 +29,20 @@ export class Contact {
     return this._rendered;
   }
   renderMOC(data, isPhone = false) {
-    const moc = document.createElement('td');
-    moc.classList.add('contact_card_meansofcontact');
+    const moc = document.createElement('a');
+    moc.setAttribute('href', '#');
+    moc.classList.add('contact_card_meansofcontact_link');
     const icon = document.createElement('i');
     icon.classList.add('fas', isPhone ? 'fa-phone' : 'fa-envelope');
     icon.setAttribute('aria-hidden', 'true');
     moc.appendChild(icon);
     moc.appendChild(document.createTextNode(data));
-    if(isPhone) moc.addEventListener('click', () => {
-      this.contactList.callContact(this);
-    });
-    return moc;
+    if(isPhone) {
+      moc.addEventListener('click', () => {
+        this.contactList.callContact(this);
+      });
+  };
+    return this.renderTD('meansofcontact', moc);
   }
   renderTD(className, content) {
     const td = document.createElement('td');
