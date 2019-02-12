@@ -16,7 +16,9 @@ export class Contact {
     const tr = document.createElement('tr');
     tr.classList.add('contact_card');
 
-    tr.appendChild(this.renderTD('user_icon', document.createElement('img')));
+    const img = document.createElement('img');
+    img.setAttribute('alt', `Contact photo for ${this.firstName} ${this.lastName}`);
+    tr.appendChild(this.renderTD('user_icon', img));
 
     tr.appendChild(this.renderTD('first_name', this.firstName));
     tr.appendChild(this.renderTD('last_name', this.lastName));
@@ -29,6 +31,7 @@ export class Contact {
     return this._rendered;
   }
   renderMOC(data, isPhone = false) {
+    if(!data) return this.renderTD('meansofcontact', '');
     const moc = document.createElement('a');
     moc.setAttribute('href', '#');
     moc.classList.add('contact_card_meansofcontact_link');
@@ -58,7 +61,6 @@ export class Contact {
       .then(res => res.json())
       .then(res => {
         const img = this._rendered.querySelector('.contact_card_user_icon img');
-        img.setAttribute('alt', `Contact photo for ${this.firstName} ${this.lastName}`);
         img.setAttribute('src', res[0].url);
       });
   }

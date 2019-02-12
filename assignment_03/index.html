@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Assignment 1</title>
+    <title>Assignment 3</title>
     <script src="./phone.js" type="module"></script>
     <link rel="stylesheet" href="./phone.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   </head>
   <body>
     <div id="container">
+      <h1 class="screenreader">Assignment 3: Jacob Bloom</h1>
       <nav id="tab_bar" role="tablist">
         <a href="#tabcontent_dialer" class="tab" data-tabcontent="dialer"><i class="fas fa-phone" aria-hidden="true"></i> Phone</a>
         <a href="#tabcontent_contacts" class="tab" data-tabcontent="contacts"><i class="fas fa-address-book" aria-hidden="true"></i> Contacts</a>
@@ -44,7 +45,7 @@
         </section>
         <section id="tabcontent_contacts" class="tabcontent">
           <table id="contacts_table" aria-live="polite">
-            <thead id="contacts_thead">
+            <thead id="contacts_thead" class="screenreader">
               <tr>
                 <th>Contact Photo</th>
                 <th>First Name</th>
@@ -58,11 +59,22 @@
         </section>
         <section id="tabcontent_newcontact" class="tabcontent">
             <div class="contact_card">
-              <i class="fas fa-user-circle contact_card_user_icon"></i>
-              <h2 class="contact_card_name"><input id="newcontact_firstName" placeholder="First"/> <input id="newcontact_lastName" placeholder="Last"/></h2>
-              <div class="contact_card_meansofcontact_list">
-                <div class="contact_card_meansofcontact"><i class="fas fa-phone"></i><input id="newcontact_phone" placeholder="Add phone"/></div>
-                <div class="contact_card_meansofcontact"><i class="fas fa-envelope"></i><input id="newcontact_email" placeholder="Add email"/></div>
+              <i class="fas fa-user-circle contact_card_user_icon" aria-hidden="true"></i>
+              <h2 class="contact_card_name">
+                <label for="newcontact_firstName" class="screenreader">First Name</label>
+                <input id="newcontact_firstName" placeholder="First"/>
+                <label for="newcontact_lastName" class="screenreader">Last Name</label>
+                <input id="newcontact_lastName" placeholder="Last"/>
+              </h2>
+              <div class="contact_card_meansofcontact_link">
+                <i class="fas fa-phone"></i>
+                <label for="newcontact_phone" class="screenreader">Phone Number</label>
+                <input id="newcontact_phone" placeholder="Add phone"/>
+              </div>
+              <div class="contact_card_meansofcontact_link">
+                <i class="fas fa-envelope"></i>
+                <label for="newcontact_email" class="screenreader">Email Address</label>
+                <input id="newcontact_email" placeholder="Add email"/>
               </div>
             </div>
             <div class="dialer_row">

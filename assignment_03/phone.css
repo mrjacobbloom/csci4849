@@ -8,6 +8,14 @@ html, body {
   box-sizing: border-box;
   transition: background 0.2s;
 }
+.screenreader { /* https://webaim.org/techniques/css/invisiblecontent */
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
 
 #container {
   margin: 0 auto;
@@ -125,14 +133,6 @@ main {
 #contacts_table, #contacts_tbody {
   display: block;
 }
-#contacts_thead { /* https://webaim.org/techniques/css/invisiblecontent */
-  position:absolute;
-  left:-10000px;
-  top:auto;
-  width:1px;
-  height:1px;
-  overflow:hidden;
-}
 
 .contact_card {
   display: block;
@@ -164,7 +164,6 @@ main {
 }
 .contact_card_meansofcontact {
   display: inline-block;
-  margin-right: 10px;
   white-space: nowrap;
 }
 .contact_card_meansofcontact_link {
@@ -174,6 +173,7 @@ main {
   background: gray;
   border-radius: 20px;
   padding: 10px 15px;
+  margin-right: 10px;
 }
 .contact_card_meansofcontact_link:hover {
   background: #999;
@@ -193,7 +193,7 @@ main {
 #tabcontent_newcontact .contact_card_name input::placeholder {
   font-style: italic;
 }
-#tabcontent_newcontact .contact_card_meansofcontact input {
+#tabcontent_newcontact .contact_card_meansofcontact_link input {
   font-size: 11pt;
   color: white;
   width: 150px;
@@ -201,7 +201,7 @@ main {
   border-bottom: 1px solid white;
   background: none;
 }
-#tabcontent_newcontact .contact_card_meansofcontact input::placeholder {
+#tabcontent_newcontact .contact_card_meansofcontact_link input::placeholder {
   color: white;
   font-style: italic;
 }
