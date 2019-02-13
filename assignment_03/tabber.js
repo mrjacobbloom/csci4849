@@ -8,7 +8,7 @@ class Tab {
     this.$content = document.querySelector(id);
 
     this.$tab.setAttribute('role', 'tab')
-    this.$tab.setAttribute('aria-controls', id);
+    this.$tab.setAttribute('aria-controls', id.slice(1));
     this.$content.setAttribute('role', 'tabpanel');
 
     this.tabber._phone.registerKeyBinding(`Digit${this.index + 1}`, () => this.tabber.setActive(this), null, {ctrl: true});
