@@ -189,6 +189,7 @@ main {
   border: none;
   border-bottom: 1px solid #444;
   background: none;
+  margin-bottom: 10px;
 }
 #tabcontent_newcontact .contact_card_name input::placeholder {
   font-style: italic;

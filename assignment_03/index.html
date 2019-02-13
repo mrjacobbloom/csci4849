@@ -60,12 +60,12 @@
         <section id="tabcontent_newcontact" class="tabcontent">
             <div class="contact_card">
               <i class="fas fa-user-circle contact_card_user_icon" aria-hidden="true"></i>
-              <h2 class="contact_card_name">
+              <div class="contact_card_name">
                 <label for="newcontact_firstName" class="screenreader">First Name</label>
                 <input id="newcontact_firstName" placeholder="First"/>
                 <label for="newcontact_lastName" class="screenreader">Last Name</label>
                 <input id="newcontact_lastName" placeholder="Last"/>
-              </h2>
+              </div>
               <div class="contact_card_meansofcontact_link">
                 <i class="fas fa-phone"></i>
                 <label for="newcontact_phone" class="screenreader">Phone Number</label>
@@ -89,10 +89,15 @@
             for the cat pix!
           </p>
           <p>
-            The contact list is secretly a table. Hopefully that'll work out
-            okay with screen readers.
+            The contact list is secretly a table with a whole bunch of CSS
+            formatting to make each row look like cards. Hopefully that'll work
+            out okay with screen readers.
           </p>
           <h2>Keyboard Shortcuts</h2>
+          <p>
+            Note that "Enter" will not work as a keyboard shortcut if a button
+            or link has browser focus.
+          </p>
           <div id="keyboard_shortcuts"></div>
         </section>
       </main>
