@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+	<head>
+		<title>
+			Calculator Demo
+		</title>
+		<link rel="stylesheet" href="calculator.css" type="text/css">
+		<link rel="stylesheet" href="tabby-cat.css" type="text/css">
+	</head>
+	<body>
+		<div id="calculator">
+			<h1>calc U l8r</h1>
+			<div class="calculator_row" id="display">
+				<input id="number_input">
+			</div>
+			<div class="calculator_row">
+				<button id="button7" class="calcButton row1 col1">7</button>
+				<button id="button8" class="calcButton row1 col2">8</button>
+				<button id="button9" class="calcButton row1 col3">9</button>
+				<button id="buttonDivide" class="calcButton row1 col4 function">/</button>
+			</div>
+			<div class="calculator_row">
+				<button id="button4" class="calcButton row2 col1">4</button>
+				<button id="button5" class="calcButton row2 col2">5</button>
+				<button id="button6" class="calcButton row2 col3">6</button>
+				<button id="buttonMultiply" class="calcButton row2 col4 function">*</button>
+			</div>
+			<div class="calculator_row">
+				<button id="button1" class="calcButton row3 col1">1</button>
+				<button id="button2" class="calcButton row3 col2">2</button>
+				<button id="button3" class="calcButton row3 col3">3</button>
+				<button id="buttonAdd" class="calcButton row3 col4 function">+</button>
+			</div>
+			<div class="calculator_row">
+				<button id="button0" class="calcButton row4 col1">0</button>
+				<button id="buttonClear" class="calcButton row4 col2 meta">C</button>
+				<button id="buttonEquals" class="calcButton row4 col3 meta">=</button>
+				<button id="buttonSubtract" class="calcButton row4 col4 function">-</button>
+			</div>
+		</div>
+		<div id="comments">
+			<h2>About this app</h2>
+			<h3>Instructions</h3>
+			<p>
+				This is a one-button scanning interface like we saw in class. Use any
+				key to choose a row, then to choose a column or cancel and go back to
+				row selection.
+			</p>
+
+			<h3>Test Results</h3>
+			<p>
+				I decided to test whether the length of the time interval has any real
+				effect of error rate and input speed. I timed myself entering 3
+				equations into the calculator with interval times 250ms and 500ms. Here
+				are my results:
+			</p>
+			<table>
+				<thead>
+					<tr>
+						<th>Interval (ms)</th>
+						<th>Equation</th>
+						<th>Errors</th>
+						<th>Completion time (secs)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>250</td>
+						<td>76+81=</td>
+						<td>5</td>
+						<td>57.95</td>
+					</tr>
+					<tr>
+						<td>250</td>
+						<td>34+6=</td>
+						<td>3</td>
+						<td>35.42</td>
+					</tr>
+					<tr>
+						<td>250</td>
+						<td>12/6+9=</td>
+						<td>3</td>
+						<td>34.29</td>
+					</tr>
+
+					<tr>
+						<td>500</td>
+						<td>76+81=</td>
+						<td>1</td>
+						<td>17.49</td>
+					</tr>
+					<tr>
+						<td>500</td>
+						<td>34+6=</td>
+						<td>0</td>
+						<td>17.50</td>
+					</tr>
+					<tr>
+						<td>500</td>
+						<td>12/6+9=</td>
+						<td>0</td>
+						<td>21.12</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>
+				I was able to achieve far more accurate results in less total time with
+				the longer interval length; however, I seemed to get more comfortable
+				with the high-speed scanning as I went, so a power-user might be able to
+				achieve fairly high accuracy at this kind of speed with a little
+				practice.
+			</p>
+			<p>
+				One thing that struck me was that it was much harder to choose
+				the first and last items in a given row than ones in the middle at the
+				higher speed because the jump to the beginning of the row is
+				disorienting. One direction for further experimentation would be
+				something that alleviates this. For example, a change in the scanning
+				speed as you near the edges, or a scanner that bounces back and forth
+				instead of wrapping around could both help with this.
+			</p>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+		<script src="calculator.js" type="text/javascript"></script>
+		<script src="tabby-cat.js" type="text/javascript"></script>
+	</body>
+</html>

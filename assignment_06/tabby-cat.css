@@ -1,0 +1,13 @@
+.calculator_row.active_tabby {
+  outline: 4px solid #ce08a3 !important;
+  outline-offset: 2px;
+}
+
+.calculator_row.mom_tabby {
+  outline: 4px solid darkgreen;
+  outline-offset: 2px;
+}
+
+.calcButton.active_tabby {
+  outline: 4px solid #ce08a3;
+}
