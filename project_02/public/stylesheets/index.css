@@ -1,0 +1,194 @@
+html, body {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: 'Baloo Chettan', cursive;
+  background-color: pink;
+  background-image: url('../img/bg.png');
+}
+body::after { /* preload images https://stackoverflow.com/a/14390213 */
+  position:absolute; width:0; height:0; overflow:hidden; z-index:-1;
+  content:
+      url('../img/toaster.png')
+      url('../img/toaster-blink.png')
+      url('../img/bread.png')
+      url('../img/bread-blink.png')
+      url('../img/toast.png')
+      url('../img/toast-blink.png');
+}
+.container {
+  width: 1200px;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0px auto;
+}
+@media(max-width: 1230px) {
+  .container {
+    width: 100vw;
+    flex-direction: column;
+    margin: 0;
+  }
+  #characters {
+    width: 500px;
+  }
+  #chat {
+    height: unset;
+    margin: 50px;
+    align-self: stretch;
+  }
+  #output-bubble, #input-bubble {
+    margin-bottom: 50px !important;
+  }
+}
+
+#characters {
+  position: relative;
+  flex: 1;
+  height: 443px;
+}
+.character {
+  width: 500px;
+  height: 443px;
+  position: absolute;
+  transition: all 0.6s;
+}
+.character-skin {
+  position: absolute;
+  width: 500px;
+  height: 443px;
+  animation: blink 10s infinite;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-origin: 50% 50%;
+  background-image: var(--idle);
+  transition: opacity 1s;
+}
+#toaster-skin {
+  --idle:  url('../img/toaster.png');
+  --blink: url('../img/toaster-blink.png');
+}
+#toast {
+  --toastedness: 0;
+}
+#bread-skin {
+  --idle:  url('../img/bread.png');
+  --blink: url('../img/bread-blink.png');
+  animation-delay: 4s;
+}
+#toast-skin {
+  --idle:  url('../img/toast.png');
+  --blink: url('../img/toast-blink.png');
+  animation-delay: 4s;
+  opacity: var(--toastedness);
+}
+@keyframes blink {
+  0% { background-image: var(--idle); }
+  63% { background-image: var(--idle); }
+  64% { background-image: var(--blink); }
+  65% { background-image: var(--idle); }
+  67% { background-image: var(--idle); }
+  68% { background-image: var(--blink); }
+  69% { background-image: var(--idle); }
+  100% { background-image: var(--idle); }
+}
+.mode_none #toast {
+  transform: translate3d(-500px, -500px, 0) !important;
+}
+.mode_contains_bread #toast {
+  /*transform: translateY(0);*/
+  animation: toast-fly-in 5s;
+}
+.mode_contains_bread #characters:hover #toast, .mode_done #toast {
+  transform: translateY(-120px);
+}
+@keyframes toast-fly-in {
+  0% {
+    transform: translate3d(-500px, -500px, 0) !important;
+  }
+  70% {
+    transform: translate3d(0, -120px, 0) !important;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) !important;
+  }
+}
+
+#chat {
+  flex: 1;
+  display: flex;
+  height: 90vh;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+#output-bubble, #input-bubble {
+  flex: 1;
+  margin-bottom: 6vh;
+  display: flex;
+  position: relative;
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+}
+#input-bubble {
+  margin-left: auto;
+}
+#output-bubble::after {
+  position: absolute;
+  bottom: 0;
+  left: -30px;
+  width: 1px;
+  height: 1px;
+  content: "";
+  border-left: 50px solid transparent;
+  border-bottom: 30px solid white;
+}
+#input-bubble::after {
+  position: absolute;
+  bottom: 0;
+  right: -30px;
+  width: 1px;
+  height: 1px;
+  content: "";
+  border-right: 50px solid transparent;
+  border-bottom: 30px solid white;
+}
+#output {
+  font-size: 20pt;
+  max-height: 100%;
+  overflow-y: scroll;
+}
+#input {
+  flex: 1;
+  border: 0;
+  font-family: 'Baloo Chettan', cursive;
+  font-size: 20pt;
+}
+#buttons {
+  flex: 1;
+  display: flex;
+}
+#buttons a {
+  flex: 1;
+  display: flex;
+  text-decoration: none;
+  font-size: 16pt;
+  border-radius: 20px;
+  background: #6d6bbf;
+  color: white;
+  margin: 0 10px;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+#buttons a:hover {
+  background: #a3a2d7;
+}
+#buttons a.disabled {
+  background: #a3a2d7;
+  pointer-events: none;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Toaster</title>
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan" rel="stylesheet">
+  <link href="/stylesheets/index.css" rel="stylesheet">
+  <script src="/scripts/client.js" type="module"></script>
+</head>
+
+<body class="mode_none">
+  <div class="container">
+    <div id="characters">
+      <div class="character" id="toast">
+          <div class="character-skin" id="bread-skin"></div>
+          <div class="character-skin" id="toast-skin"></div>
+      </div>
+      <div class="character" id="toaster">
+        <div class="character-skin" id="toaster-skin"></div>
+      </div>
+    </div>
+    <div id="chat">
+      <div id="output-bubble">
+        <span id="output" aria-live="assertive">Loading...</span>
+      </div>
+      <div id="input-bubble">
+        <input id="input" placeholder='Say something!'/>
+      </div>
+      <div id="buttons">
+        <a href="#" id="insert-bread"><span>Insert bread</span></a>
+        <a href="#" id="remove-toast"><span>Remove toast</span></a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
