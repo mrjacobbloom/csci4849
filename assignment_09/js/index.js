@@ -11,7 +11,7 @@ class Word {
   speak(tone) {
     var utterance = new SpeechSynthesisUtterance(this.word);
     utterance.pitch = tone*2; // on a scale of 0-2 for some reason?
-    utterance.rate = 1 + (tone-0.5); // it's a literal speed coefficient so we're gonna be careful here
+    utterance.rate = 1 + (tone-0.5)*0.7; // it's a literal speed coefficient so we're gonna be careful here
     this.$element.classList.add('highlight');
     const promise = new Promise((resolve, reject) => {
       utterance.addEventListener('end', () => {

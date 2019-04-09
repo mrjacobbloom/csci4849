@@ -12,9 +12,13 @@ h2 {
 #display {
   font-size: 30pt;
   text-align: center;
+  box-sizing: content-box;
   min-height: 1.2em;
   line-height: 1.2;
-  margin: 2em 0;
+  padding: 1em;
+  margin: 1em 0;
+  background: lightblue;
+  border-radius: 5px;
 }
 
 #display span.highlight {
