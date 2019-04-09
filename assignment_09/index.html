@@ -24,6 +24,38 @@
         over prosody will make it possible to express a more diverse range of
         emotion via an AAC system.
       </p>
+      <p>
+        The keyboard is based off of the one we saw demo'd in class and in
+        <i>Gleason</i>. This is not a fully-working demo. It works well enough
+        with the mouse to get the point across but it hasn't been tested with
+        actual eye-tracking software and I made some design decisions that are
+        not necessarily well-suited to eye-tracking. Here are a few forseeable
+        issues:
+      </p>
+      <ul>
+        <li>
+          It's not particularly full-featured. It's missing punctuation, which
+          is itself one of the most important prosodic markers in written
+          speech.
+        </li>
+        <li>
+          A dwell is canceled as soon as the mouse leaves the button, which
+          wouldn't actually work for eye-tracking because of saccades as
+          we've discussed in class.
+        </li>
+        <li>
+          The slider is undoubtedly horribly unergonomic for eye-tracking. The
+          reason it doesn't use dwell like the keyboard is because JavaScript's
+          speech APIs don't tell me how long an "utterance" will take, so
+          there's no way to predict how long one might have the opportunity to
+          dwell before the next word begins.
+        </li>
+      </ul>
+      <p>
+        Something else that might be worth exploring is real-time tone
+        modification mid-word. This isn't possible with JavaScript's speech API
+        but it might be possible with proprietary AAC software.
+      </p>
       <h2>Demo</h2>
       <div id="display"></div>
       <div id="keyboard"></div>

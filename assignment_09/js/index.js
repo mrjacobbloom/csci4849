@@ -44,6 +44,7 @@ window.addEventListener('load', () => {
 
   function setState(newstate) {
     if(state == newstate) return;
+    while($display.firstChild) $display.firstChild.remove();
     $keyboard.style.display = (newstate == STATES.keyboard) ? '' : 'none';
     $toneSlider.style.display = (newstate == STATES.tone_slider) ? '' : 'none';
   }
@@ -51,7 +52,6 @@ window.addEventListener('load', () => {
 
   let words;
   function objectifyWords(value) {
-    while($display.firstChild) $display.firstChild.remove();
     const word_vals = value.split(' ');
     words = []
     for(const word_s of word_vals) {
