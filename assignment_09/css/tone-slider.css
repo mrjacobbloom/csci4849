@@ -1,0 +1,34 @@
+#tone-slider {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  --frac: 0;
+}
+.tone-track {
+  min-height: 50vh;
+  flex-grow: 0;
+  min-width: 6rem;
+  position: relative;
+  background: linear-gradient(to bottom, #30c928 0%,#fff72b 33%,#ff952b 67%,#ff2b2b 100%);
+  border-radius: 2rem;
+}
+.tone-thumb {
+  pointer-events: none;
+  position: absolute;
+  width: 8rem;
+  left: -1rem;
+  top: calc(var(--frac)*100% - 0.5rem); /* yes yes I know you're supposed to use transforms but also this math is so easy */
+  min-height: 1rem;
+  background: blue;
+  border-radius: 1rem;
+  text-align: center;
+  color: white;
+  font-size: 9pt;
+  font-weight: bold;
+  padding: 0.2rem 1rem;
+}
+.tone-buttons {
+  align-self: center;
+  flex-grow: 0;
+  width: 30%;
+}

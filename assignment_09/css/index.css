@@ -17,28 +17,42 @@ h2 {
   margin: 2em 0;
 }
 
-#tone-editor {
-  display: flex;
-  justify-content: center;
+#display span.highlight {
+  color: blue;
 }
-#tone-track {
-  min-height: 50vh;
-  flex-grow: 0;
-  min-width: 2rem;
-  position: relative;
-  background: linear-gradient(to bottom, #30c928 0%,#fff72b 33%,#ff952b 67%,#ff2b2b 100%);
-  border-radius: 2rem;
-}
-#tone-thumb {
-  position: absolute;
-  width: 4rem;
-  left: -1rem;
-  min-height: 1rem;
-  background: blue;
-  border-radius: 1rem;
+
+.hover-button {
+  padding: 0.6rem;
+  font-size: 20pt;
+  border: 1px solid gray;
+  border-radius: 0.1rem;
+  margin: 0.2em;
   text-align: center;
-  color: white;
-  font-size: 9pt;
-  font-weight: bold;
-  padding: 0.2rem 1rem;
+  background: white;
+}
+.hb-dwell {
+  animation: hb-dwell 400ms linear;
+}
+.hb-success {
+  animation: hb-success 300ms linear;
+}
+
+@keyframes hb-dwell {
+  0% {
+    box-shadow: inset 0 0 0 0 blue;
+  }
+  100% {
+    box-shadow: inset 0 0 5px 5px blue;
+  }
+}
+@keyframes hb-success {
+  0% {
+    background: blue;
+  }
+  50% {
+    background: white;
+  }
+  100% {
+    background: white;
+  }
 }
