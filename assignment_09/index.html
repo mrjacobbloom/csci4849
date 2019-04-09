@@ -26,17 +26,18 @@
       </p>
       <p>
         The keyboard is based off of the one we saw demo'd in class and in
-        <i>Gleason</i>. This is not a fully-working demo. It works well enough
-        with the mouse to get the point across but it hasn't been tested with
-        actual eye-tracking software and I made some design decisions that are
-        not necessarily well-suited to eye-tracking. Here are a few forseeable
-        issues:
+        <i>Gleason</i>. This is not a fully-working prototype. It works well
+        enough with the mouse to get the point across but it hasn't been tested
+        with actual eye-tracking software and I made some design decisions that
+        are not necessarily well-suited to eye-tracking. Here are a few
+        forseeable issues:
       </p>
       <ul>
         <li>
           It's not particularly full-featured. It's missing punctuation, which
           is itself one of the most important prosodic markers in written
-          speech.
+          speech and is necessary for writing contractions in a way the TTS
+          engine will understand. Oh well.
         </li>
         <li>
           A dwell is canceled as soon as the mouse leaves the button, which
@@ -56,7 +57,12 @@
         modification mid-word. This isn't possible with JavaScript's speech API
         but it might be possible with proprietary AAC software.
       </p>
-      <h2>Demo</h2>
+      <p>
+        Credit goes to the delightful
+        <a href="https://github.com/papercss/papercss">PaperCSS</a> for this
+        theme.
+      </p>
+      <h2>Prototype</h2>
       <div id="display"></div>
       <div id="keyboard"></div>
       <div id="tone-slider">
