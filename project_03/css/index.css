@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Amaranth');
+html, body {margin: 0; padding: 0;}
+body {
+  display: flex;
+}
+#left {
+  box-sizing: border-box;
+  flex: 1;
+  margin: 2vh;
+  padding: 2em;
+  background: #8fc0c1;
+  border-radius: 1em;
+  margin-right: 0;
+}
+h1, h2 {
+  font-family: 'Amaranth', sans-serif;
+}
+h1 {
+  margin-top: 0;
+}
+p {
+  font-family: sans-serif;
+}
+
+#board {
+  box-sizing: border-box;
+  margin: 2vh;
+  height: 96vh;
+  width: 96vh;
+  flex-shrink: 0;
+}
+
+@media (orientation: portrait) {
+  body {
+    flex-direction: column;
+  }
+  #left {
+    margin: 2vw;
+    margin-bottom: 0;
+  }
+  #board {
+    margin: 2vw;
+    height: 96vw;
+    width: 96vw;
+  }
+}
