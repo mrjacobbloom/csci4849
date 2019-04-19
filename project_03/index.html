@@ -7,21 +7,42 @@
   </head>
   <body>
     <div id="left">
-      <h1>ScanTastic Toe</h1>
-      <h2>What even is this and why</h2>
-      <p>
-        This is ScanTastic Toe, the scanning-tastic version of Tic Tac Toe! Use
-        the space bar to choose a space. Every time you choose a space it gets
-        faster, and when you try to choose an unavailable space it gets EVEN
-        FASTERER!! Reload to start over.
-      </p>
-      <p>
-        The AI is borrowed from Ali Alaa's
-        <a href="https://github.com/alialaa/js-tic-tac-toe">Tic Tac Toe
-        project</a> on Github.
-      </p>
-      <h2>Okay but I asked why. Why??</h2>
-      <p>For my Accessibility class.</p>
+      <div id="about">
+        <h1>ScanTastic Toe</h1>
+        <h2>What even is this</h2>
+        <p>
+          This is ScanTastic Toe, the single-switch, scanning-tastic version of
+          Tic Tac Toe. Use the space bar to choose a space. Every time you
+          choose a space it gets faster, and when you try to choose an
+          unavailable space it gets <strong>EVEN FASTERER!!</strong>
+        </p>
+        <p>
+          The AI is borrowed from Ali Alaa's
+          <a href="https://github.com/alialaa/js-tic-tac-toe">Tic Tac Toe
+          project</a> on Github. Also, my name is Jacob Bloom for the record.
+        </p>
+      </div>
+      <div id="controls">
+        <div class="control-group">
+          <span class="control-group-name">AI Smartness</span>
+          <div class="button-group">
+            <input type="radio" id="smartness-1" name="smartness" value="1" checked /><label for="smartness-1">Novice</label>
+            <input type="radio" id="smartness-2" name="smartness" value="3" /><label for="smartness-2">B+ Student</label>
+            <input type="radio" id="smartness-3" name="smartness" value="-1" /><label for="smartness-3">Genius</label>
+          </div>
+        </div>
+        <div class="control-group">
+            <span class="control-group-name">Speed</span>
+            <div class="button-group">
+              <input type="radio" id="speed-1" name="speed" value="1.4" /><label for="speed-1">Slow</label>
+              <input type="radio" id="speed-2" name="speed" value="1" checked /><label for="speed-2">Standard</label>
+              <input type="radio" id="speed-3" name="speed" value="0.7" /><label for="speed-3">tOO FAST</label>
+            </div>
+          </div>
+        <div class="control-group">
+          <button id="restart" class="button" type="button" value="restart">Restart</button>
+        </div>
+      </div>
     </div>
     <div id="board"></div>
   </body>

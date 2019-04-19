@@ -2,15 +2,24 @@
 html, body {margin: 0; padding: 0;}
 body {
   display: flex;
+  font-family: sans-serif;
+  margin: 2vh;
+  --c-dark: #158587;
+  --c-light: #8fc0c1;
 }
 #left {
+  margin: 0 2vh 0 0;
   box-sizing: border-box;
   flex: 1;
-  margin: 2vh;
+  display: flex;
+  flex-direction: column;
+}
+#about {
+  flex: 1;
   padding: 2em;
-  background: #8fc0c1;
+  background: var(--c-light);
   border-radius: 1em;
-  margin-right: 0;
+  margin-bottom: 2vh;
 }
 h1, h2 {
   font-family: 'Amaranth', sans-serif;
@@ -18,13 +27,65 @@ h1, h2 {
 h1 {
   margin-top: 0;
 }
-p {
-  font-family: sans-serif;
+#controls {
+  flex: 0;
+  padding: 2em;
+  background: var(--c-light);
+  border-radius: 1em;
+}
+
+.control-group:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+.control-group-name {
+  font-family: 'Amaranth', sans-serif;
+  margin-right: 1em;
+}
+
+.button-group {
+  display: inline-flex;
+}
+.button-group input {
+  display: none;
+}
+.button-group label {
+  white-space: nowrap;
+  background: var(--c-dark);
+  color: var(--c-light);
+  flex: 0;
+  margin: 0;
+  margin-right: 1px;
+  padding: 0.5rem;
+  transition: 0.4s color;
+}
+.button-group label:first-of-type {
+  border-top-left-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
+}
+.button-group label:last-of-type {
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+}
+.button-group input:checked + label, .button-group label:hover {
+  color: white;
+}
+
+.button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--c-dark);
+  border-radius: 0.2rem;
+  padding: 0.5rem;
+  color: white;
+  font-size: 16px;
+  border: none;
+  white-space: nowrap;
 }
 
 #board {
   box-sizing: border-box;
-  margin: 2vh;
   height: 96vh;
   width: 96vh;
   flex-shrink: 0;
@@ -33,13 +94,12 @@ p {
 @media (orientation: portrait) {
   body {
     flex-direction: column;
+    margin: 2vw;
   }
   #left {
-    margin: 2vw;
-    margin-bottom: 0;
+    margin: 0 0 2vh 0;
   }
   #board {
-    margin: 2vw;
     height: 96vw;
     width: 96vw;
   }

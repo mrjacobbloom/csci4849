@@ -2,9 +2,13 @@ import BoardDom from './BoardDom.js';
 import Board from './Board.js';
 import Player from './Player.js';
 
+function getChecked(name) {
+  return document.querySelector(`[name="${name}"]:checked`).value;
+}
+
 window.addEventListener('load', () => {
   let board = new Board();
-  const ai = new Player();
+  const ai = new Player(1);
 
   const boardDom = new BoardDom(document.querySelector('#board'));
   boardDom.onSelect = spaceIdx => {
@@ -20,7 +24,22 @@ window.addEventListener('load', () => {
     } else {
       boardDom.interval *= 0.7;
     }
-    if(boardDom.interval < 60) boardDom.interval = 60;
+    if(boardDom.interval < 60) boardDom.interval = 80;
   };
+
+  // this is such a hack, don't do code like this code
+  document.querySelector('#controls').addEventListener('click', e => {
+    if(e.target.name == 'smartness') {
+      ai.max_depth = Number(e.target.value);
+    }
+    if(e.target.name == 'speed') {
+      boardDom.intervalModifier = Number(e.target.value);
+    }
+    if(e.target.value == 'restart') {
+      board = new Board();
+      boardDom.reset();
+    }
+
+  })
 
 });

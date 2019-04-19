@@ -49,21 +49,20 @@ export default class BoardDom {
         $row.appendChild(space.$elem);
       }
     }
+    this.timeout = null;
+    this.intervalModifier = 1;
 
-    this.interval = 400;
-    this.highlightIndex = -1;
     this.onInterval = this.onInterval.bind(this);
-    this.onInterval();
-
-    this.done = false;
     window.addEventListener('keydown', this.onKeydown.bind(this));
+    this.reset();
   }
   onInterval() {
     if(this.spaces[this.highlightIndex]) this.spaces[this.highlightIndex].unHighlight();
     if(!this.done) {
       this.highlightIndex = (this.highlightIndex + 1) % 9;
       this.spaces[this.highlightIndex].highlight();
-      setTimeout(this.onInterval, this.interval);
+      if(this.timeout) clearTimeout(this.timeout);
+      this.timeout = setTimeout(this.onInterval, this.interval * this.intervalModifier);
     }
   }
   onKeydown(e) {
@@ -80,9 +79,25 @@ export default class BoardDom {
     }
   }
   highlightWinners(winners) {
+    clearTimeout(this.timeout);
+    this.timeout = null;
+    if(this.spaces[this.highlightIndex]) this.spaces[this.highlightIndex].unHighlight();
     for(let winner of winners) {
       this.spaces[winner].highlightWinner();
     }
     this.$elem.classList.add('winners');
+  }
+  reset() {
+    this.$elem.classList.remove('winners');
+    this.interval = 400;
+    this.done = false;
+    this.highlightIndex = -1;
+    for(const space of this.spaces) {
+      space.$elem.classList.remove('winner', 'highlight');
+      space.setValue('');
+    }
+    clearTimeout(this.timeout);
+    this.timeout = null;
+    this.onInterval();
   }
 }

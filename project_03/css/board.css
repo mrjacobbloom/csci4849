@@ -1,7 +1,7 @@
 .board {
   font-family: 'Amaranth', sans-serif;
   padding: 2em;
-  background: #158587;
+  background: var(--c-dark);
   border-radius: 1em;
   display: flex;
   flex-direction: column;
@@ -23,7 +23,7 @@
   transition: .4s color;
 }
 .board-space.highlight {
-  background: #8fc0c1;
+  background: var(--c-light);
 }
 .board-row:first-child > .board-space { border-top-color: transparent;}
 .board-row:last-child> .board-space { border-bottom-color: transparent;}
@@ -38,5 +38,5 @@
 }
 
 .winners .board-space:not(.winner) {
-  color: #8fc0c1;
+  color: var(--c-light);
 }
