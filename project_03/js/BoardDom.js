@@ -49,10 +49,18 @@ export default class BoardDom {
         $row.appendChild(space.$elem);
       }
     }
+    const resetPromptWrapper = document.createElement('div');
+    resetPromptWrapper.classList.add('board-reset-prompt-wrapper');
+    const resetPrompt = document.createElement('div');
+    resetPrompt.appendChild(document.createTextNode('Space to reset'))
+    resetPrompt.classList.add('board-reset-prompt');
+    resetPromptWrapper.appendChild(resetPrompt);
+    this.$elem.appendChild(resetPromptWrapper);
     this.timeout = null;
     this.intervalModifier = 1;
 
     this.onInterval = this.onInterval.bind(this);
+    this.promptReset = this.promptReset.bind(this);
     window.addEventListener('keydown', this.onKeydown.bind(this));
     this.reset();
   }
@@ -69,7 +77,11 @@ export default class BoardDom {
     if(e.key === ' ') {
       e.preventDefault();
       e.stopPropagation();
-      if(this.onSelect) this.onSelect(this.highlightIndex);
+      if(this.isPrompting) {
+        this.reset();
+      } else {
+        if(this.onSelect) this.onSelect(this.highlightIndex);
+      }
       return false;
     }
   }
@@ -88,9 +100,11 @@ export default class BoardDom {
     this.$elem.classList.add('winners');
   }
   reset() {
-    this.$elem.classList.remove('winners');
+    this.$elem.classList.remove('winners', 'prompting');
+    this.isPrompting = false;
     this.interval = 400;
     this.done = false;
+    this.isPrompting = false;
     this.highlightIndex = -1;
     for(const space of this.spaces) {
       space.$elem.classList.remove('winner', 'highlight');
@@ -99,5 +113,9 @@ export default class BoardDom {
     clearTimeout(this.timeout);
     this.timeout = null;
     this.onInterval();
+  }
+  promptReset() {
+    this.isPrompting = true;
+    this.$elem.classList.add('prompting');
   }
 }

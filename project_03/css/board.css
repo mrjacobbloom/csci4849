@@ -5,6 +5,7 @@
   border-radius: 1em;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 .board-row {
   flex: 1;
@@ -39,4 +40,23 @@
 
 .winners .board-space:not(.winner) {
   color: var(--c-light);
+}
+
+.board .board-reset-prompt-wrapper {
+  opacity: 0;
+  transition: .6s opacity;
+  background: rgba(143, 192, 193, 0.5);
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.board.prompting .board-reset-prompt-wrapper { opacity: 1; }
+.board-reset-prompt {
+  background: var(--c-dark);
+  padding: 1em;
+  border-radius: 1em;
+  font-family: 'Amaranth', sans-serif;
+  color: white;
 }

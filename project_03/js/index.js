@@ -2,10 +2,6 @@ import BoardDom from './BoardDom.js';
 import Board from './Board.js';
 import Player from './Player.js';
 
-function getChecked(name) {
-  return document.querySelector(`[name="${name}"]:checked`).value;
-}
-
 window.addEventListener('load', () => {
   let board = new Board();
   const ai = new Player(1);
@@ -20,6 +16,7 @@ window.addEventListener('load', () => {
       if(terminal = board.isTerminal()) {
         boardDom.done = true;
         boardDom.highlightWinners(terminal.winners);
+        setTimeout(boardDom.promptReset, 350);
       }
     } else {
       boardDom.interval *= 0.7;
