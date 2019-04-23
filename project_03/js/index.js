@@ -23,6 +23,9 @@ window.addEventListener('load', () => {
     }
     if(boardDom.interval < 60) boardDom.interval = 80;
   };
+  boardDom.onReset = () => {
+    board = new Board();
+  };
 
   // this is such a hack, don't do code like this code
   document.querySelector('#controls').addEventListener('click', e => {
@@ -33,7 +36,6 @@ window.addEventListener('load', () => {
       boardDom.intervalModifier = Number(e.target.value);
     }
     if(e.target.value == 'restart') {
-      board = new Board();
       boardDom.reset();
     }
 

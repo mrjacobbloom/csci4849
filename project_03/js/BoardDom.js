@@ -38,11 +38,14 @@ export default class BoardDom {
   constructor($elem) {
     this.$elem = $elem;
     this.$elem.classList.add('board');
+    this.$spacesWrapper = document.createElement('div');
+    this.$spacesWrapper.classList.add('board-spaces-wrapper');
+    this.$elem.appendChild(this.$spacesWrapper);
     this.spaces = [];
     for(let rowIdx = 0; rowIdx < 3; rowIdx++) {
       const $row = document.createElement('div');
       $row.classList.add('board-row');
-      this.$elem.appendChild($row);
+      this.$spacesWrapper.appendChild($row);
       for(let colIdx = 0; colIdx < 3; colIdx++) {
         const space = new Space(this, rowIdx, colIdx);
         this.spaces.push(space);
@@ -110,6 +113,7 @@ export default class BoardDom {
       space.$elem.classList.remove('winner', 'highlight');
       space.setValue('');
     }
+    if(this.onReset) this.onReset();
     clearTimeout(this.timeout);
     this.timeout = null;
     this.onInterval();
